@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EmployeeController;
 
+//route belajar dasar laravel pal sandhika
 Route::get('/user', function () {
     return view('laravel');
 });
@@ -17,3 +19,7 @@ Route::get('/blog', function () {
 Route::get('/contact', function () {
     return view('contact',['nama'=>'kemal']);
 });
+
+
+// Route untuk resource EmployeeController
+Route::resource('employees', EmployeeController::class);

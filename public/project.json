@@ -1,0 +1,9 @@
+[
+  {
+    "image": "/images/project1.jpg", 
+    "category": "Web Application",
+    "title": "E-commerce Platform",
+    "description": "A full-featured e-commerce website built with Laravel and React...",
+    "link": "https://example.com"
+  }
+]

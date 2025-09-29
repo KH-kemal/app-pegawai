@@ -1,22 +1,35 @@
-<php>
-    namespace App\Models;
+<?php
 
-    use Illuminate\Database\Eloquent\Factories\HasFactory;
+namespace App\Models;
 
-    class Employee extends Model
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Employee extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'nama_lengkap',
+        'email',
+        'nomor_telepon',
+        'tanggal_lahir',
+        'alamat',
+        'tanggal_masuk',
+        'departemen_id',
+        'jabatan_id',
+        'status',
+    ];
+
+    // Relasi ke Department
+    public function department()
     {
-        use HasFactory;
-
-        protected $fillable = [
-            'nama_lengkap',
-            'email',
-            'nomor_telepon',
-            'tanggal_lahir',
-            'alamat',
-            'tanggal_masuk',
-            'departemen_id',
-            'jabatan_id',
-            'status',
-        ];
+        return $this->belongsTo(Department::class, 'departemen_id');
     }
-</php>
+
+    // Relasi ke Position
+    public function position()
+    {
+        return $this->belongsTo(Position::class, 'jabatan_id');
+    }
+}
