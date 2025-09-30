@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
 
+// Route untuk resource EmployeeController
+Route::resource('employees', EmployeeController::class);
+
+
 //route belajar dasar laravel pal sandhika
 Route::get('/user', function () {
     return view('laravel');
@@ -21,5 +25,3 @@ Route::get('/contact', function () {
 });
 
 
-// Route untuk resource EmployeeController
-Route::resource('employees', EmployeeController::class);

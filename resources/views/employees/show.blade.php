@@ -1,78 +1,80 @@
-<!DOCTYPE html>
-<html lang="id">
+@extends('master')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Pegawai</title>
-    <script src="https://cdn.tailwindcss.com/3.4.0"></script>
-</head>
+@section('title', 'Detail Pegawai')
+@section('page-title', 'Detail Pegawai')
 
-<body class="bg-gray-100 min-h-screen flex items-center justify-center p-6">
+@section('content')
+<div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-3xl mx-auto">
+    <h1 class="text-2xl font-bold text-gray-800 mb-6">Detail Pegawai</h1>
 
-    <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-2xl">
-        <h1 class="text-2xl font-bold text-gray-800 mb-6">Detail Pegawai</h1>
+    <div class="grid grid-cols-2 gap-6">
+        <div>
+            <p class="text-sm text-gray-500">Nama Lengkap</p>
+            <p class="font-semibold text-gray-800">{{ $employee->nama_lengkap }}</p>
+        </div>
 
-        <table class="w-full border border-gray-300 rounded-lg overflow-hidden">
-            <tbody>
-                <tr class="border-t">
-                    <th class="text-left p-3 bg-gray-100 w-1/3">Nama Lengkap</th>
-                    <td class="p-3">{{ $employee->nama_lengkap }}</td>
-                </tr>
-                <tr class="border-t">
-                    <th class="text-left p-3 bg-gray-100">Email</th>
-                    <td class="p-3">{{ $employee->email }}</td>
-                </tr>
-                <tr class="border-t">
-                    <th class="text-left p-3 bg-gray-100">Nomor Telepon</th>
-                    <td class="p-3">{{ $employee->nomor_telepon }}</td>
-                </tr>
-                <tr class="border-t">
-                    <th class="text-left p-3 bg-gray-100">Tanggal Lahir</th>
-                    <td class="p-3">{{ $employee->tanggal_lahir }}</td>
-                </tr>
-                <tr class="border-t">
-                    <th class="text-left p-3 bg-gray-100">Alamat</th>
-                    <td class="p-3">{{ $employee->alamat }}</td>
-                </tr>
-                <tr class="border-t">
-                    <th class="text-left p-3 bg-gray-100">Tanggal Masuk</th>
-                    <td class="p-3">{{ $employee->tanggal_masuk }}</td>
-                </tr>
-                <tr class="border-t">
-                    <th class="text-left p-3 bg-gray-100">Status</th>
-                    <td class="p-3">
-                        <span class="px-3 py-1 text-sm font-semibold rounded-full
-                            {{ $employee->status == 'aktif' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700' }}">
-                            {{ ucfirst($employee->status) }}
-                        </span>
-                    </td>
-                </tr>
-                <tr class="border-t">
-                    <th class="text-left p-3 bg-gray-100">Departemen</th>
-                    <td class="p-3">{{ $employee->department->nama_departemen ?? '-' }}</td>
-                </tr>
-                <tr class="border-t">
-                    <th class="text-left p-3 bg-gray-100">Jabatan</th>
-                    <td class="p-3">{{ $employee->position->nama_jabatan ?? '-' }}</td>
-                </tr>
-            </tbody>
-        </table>
+        <div>
+            <p class="text-sm text-gray-500">Email</p>
+            <p class="font-semibold text-gray-800">{{ $employee->email }}</p>
+        </div>
 
-        <div class="mt-6 flex gap-3">
-            <a href="{{ route('employees.index') }}"
-                class="flex-1 text-center bg-gray-300 text-gray-800 font-semibold py-2.5 rounded-lg shadow hover:bg-gray-400 transition">
-                Kembali
-            </a>
-            <a href="{{ route('employees.edit', $employee->id) }}"
-                class="flex-1 text-center bg-yellow-500 text-white font-semibold py-2.5 rounded-lg shadow hover:bg-yellow-600 transition">
-                Edit
-            </a>
-            <form action="{{ route('employees.destroy', $employee->id) }}" method="POST"
-                onsubmit="return confirm('Yakin ingin menghapus data ini?');" class="flex-1">
-                @csrf
-                @method('DELETE')
-                <button type="submit"
-                    class="w-full bg-red-600 text-white font-semibold py-2.5 rounded-lg shadow hover:bg-red-700 transition">
-                    Hapus
-                </button>
+        <div>
+            <p class="text-sm text-gray-500">Nomor Telepon</p>
+            <p class="font-semibold text-gray-800">{{ $employee->nomor_telepon }}</p>
+        </div>
+
+        <div>
+            <p class="text-sm text-gray-500">Tanggal Lahir</p>
+            <p class="font-semibold text-gray-800">{{ $employee->tanggal_lahir }}</p>
+        </div>
+
+        <div class="col-span-2">
+            <p class="text-sm text-gray-500">Alamat</p>
+            <p class="font-semibold text-gray-800">{{ $employee->alamat }}</p>
+        </div>
+
+        <div>
+            <p class="text-sm text-gray-500">Tanggal Masuk</p>
+            <p class="font-semibold text-gray-800">{{ $employee->tanggal_masuk }}</p>
+        </div>
+
+        <div>
+            <p class="text-sm text-gray-500">Departemen</p>
+            <p class="font-semibold text-gray-800">{{ $employee->department->nama_departemen ?? '-' }}</p>
+        </div>
+
+        <div>
+            <p class="text-sm text-gray-500">Jabatan</p>
+            <p class="font-semibold text-gray-800">{{ $employee->position->nama_jabatan ?? '-' }}</p>
+        </div>
+
+        <div>
+            <p class="text-sm text-gray-500">Status</p>
+            <span class="px-3 py-1 rounded text-white text-sm
+                {{ $employee->status == 'aktif' ? 'bg-green-500' : 'bg-red-500' }}">
+                {{ ucfirst($employee->status) }}
+            </span>
+        </div>
+    </div>
+
+    <div class="mt-8 flex gap-3">
+        <a href="{{ route('employees.index') }}"
+            class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600">
+            Kembali
+        </a>
+        <a href="{{ route('employees.edit', $employee->id) }}"
+            class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600">
+            Edit
+        </a>
+        <form action="{{ route('employees.destroy', $employee->id) }}" method="POST"
+              onsubmit="return confirm('Yakin ingin menghapus data ini?');">
+            @csrf
+            @method('DELETE')
+            <button type="submit"
+                class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700">
+                Hapus
+            </button>
+        </form>
+    </div>
+</div>
+@endsection
