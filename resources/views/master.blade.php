@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $title }}</title>
+    <title>{{ $title ?? 'Dashboard' }}</title>
 
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com/3.4.0"></script>
@@ -14,22 +14,21 @@
     <script src="https://unpkg.com/flowbite@1.6.6/dist/flowbite.js"></script>
 </head>
 
-<body class="bg-gray-100 min-h-screen flex">
+<body class="bg-gray-100 min-h-screen flex flex-col lg:flex-row overflow-x-hidden">
 
     <!-- Sidebar -->
     @include('partials.sidebar')
 
-    <!-- Overlay untuk background hitam di mobile -->
-    <div id="overlay"
-        class="fixed inset-0 bg-black opacity-50 hidden z-40 lg:hidden"></div>
+    <!-- Overlay untuk mobile -->
+    <div id="overlay" class="fixed inset-0 bg-black opacity-50 hidden z-40 lg:hidden"></div>
 
     <!-- Main content -->
-    <div class="flex-1 flex flex-col min-h-screen w-full lg:ml-64">
+    <div class="flex-1 flex flex-col min-h-screen w-full lg:ml-64 transition-all duration-300">
         <!-- Header -->
         @include('partials.navbar')
 
         <!-- Konten -->
-        <main class="flex-1 p-6 bg-gray-50">
+        <main class="flex-1 p-4 sm:p-6 bg-gray-50 overflow-x-auto">
             @yield('content')
         </main>
 
@@ -52,7 +51,7 @@
         });
 
         closeSidebar.addEventListener('click', () => {
-            sidebar.classList.add('-translate-x-full');
+            sidebar.classList.add('-translate-x-full'); 
             overlay.classList.add('hidden');
         });
 
@@ -61,6 +60,7 @@
             overlay.classList.add('hidden');
         });
     </script>
+
 </body>
 
 </html>

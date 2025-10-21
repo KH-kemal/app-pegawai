@@ -44,7 +44,7 @@
                     <a href="{{ route('employees.edit', $employee->id) }}"
                         class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600">Edit</a>
                     <form action="{{ route('employees.destroy', $employee->id) }}" method="POST"
-                          onsubmit="return confirm('Yakin ingin menghapus data ini?');">
+                            onsubmit="return confirm('Yakin ingin menghapus data ini?');">
                         @csrf
                         @method('DELETE')
                         <button type="submit"
