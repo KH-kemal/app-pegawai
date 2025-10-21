@@ -16,8 +16,8 @@ return new class extends Migration
             $table->date('tanggal_lahir')->nullable();
             $table->text('alamat')->nullable();
             $table->date('tanggal_masuk');
-            $table->unsignedBigInteger('departemen_id');
-            $table->unsignedBigInteger('jabatan_id');
+            $table->unsignedBigInteger('departemen_id'); // FK ke departments
+            $table->unsignedBigInteger('jabatan_id');    // FK ke positions
             $table->enum('status', ['aktif', 'nonaktif'])->default('aktif');
             $table->timestamps();
         });

@@ -19,6 +19,7 @@ class Employee extends Model
         'departemen_id',
         'jabatan_id',
         'status',
+        'gaji_pokok',
     ];
 
     // Relasi ke Department

@@ -11,6 +11,7 @@ class Position extends Model
 
     protected $fillable = [
         'nama_jabatan',
+        'gaji_pokok', 
     ];
 
     // Relasi ke Employee (1 Jabatan punya banyak Pegawai)

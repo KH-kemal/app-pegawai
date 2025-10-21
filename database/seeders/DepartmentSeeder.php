@@ -9,10 +9,10 @@ class DepartmentSeeder extends Seeder
 {
     public function run(): void
     {
-        Department::insert([
-            ['nama_departemen' => 'IT', 'created_at' => now(), 'updated_at' => now()],
-            ['nama_departemen' => 'HR', 'created_at' => now(), 'updated_at' => now()],
-            ['nama_departemen' => 'Finance', 'created_at' => now(), 'updated_at' => now()],
-        ]);
+        $departments = ['HRD', 'Keuangan', 'IT', 'Produksi'];
+
+        foreach ($departments as $dept) {
+            Department::create(['nama_departemen' => $dept]);
+        }
     }
 }

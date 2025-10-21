@@ -1,11 +1,26 @@
 @extends('master')
 
-@section('title', 'Edit Pegawai')
-@section('page-title', 'Edit Pegawai')
-
 @section('content')
+
 <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-lg mx-auto">
-    <h1 class="text-2xl font-bold text-gray-800 mb-6">Form Edit Pegawai</h1>
+    <div class="flex justify-between items-center mb-6">
+        <h1 class="text-2xl font-bold text-gray-800">Edit Data Pegawai</h1>
+        <a href="{{ route('employees.index') }}"
+           class="bg-gray-500 text-white px-4 py-2 rounded-lg shadow hover:bg-gray-600">
+           ← Kembali
+        </a>
+    </div>
+
+    @if ($errors->any())
+    <div class="mb-4 p-3 bg-red-100 text-red-800 rounded-lg">
+        <strong>Terjadi kesalahan!</strong>
+        <ul class="list-disc ml-5">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 
     <form action="{{ route('employees.update', $employee->id) }}" method="POST" class="space-y-4">
         @csrf
@@ -58,6 +73,7 @@
             <select name="departemen_id"
                 class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm 
                        focus:ring-blue-500 focus:border-blue-500 p-2.5 border">
+                <option value="">-- Pilih Departemen --</option>
                 @foreach($departments as $department)
                     <option value="{{ $department->id }}" 
                         {{ old('departemen_id', $employee->departemen_id) == $department->id ? 'selected' : '' }}>
@@ -72,6 +88,7 @@
             <select name="jabatan_id"
                 class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm 
                        focus:ring-blue-500 focus:border-blue-500 p-2.5 border">
+                <option value="">-- Pilih Jabatan --</option>
                 @foreach($positions as $position)
                     <option value="{{ $position->id }}" 
                         {{ old('jabatan_id', $employee->jabatan_id) == $position->id ? 'selected' : '' }}>
@@ -95,7 +112,7 @@
             <button type="submit"
                 class="flex-1 bg-blue-600 text-white font-semibold py-2.5 rounded-lg shadow 
                        hover:bg-blue-700 transition duration-200">
-                Update
+                Simpan Perubahan
             </button>
             <a href="{{ route('employees.index') }}"
                 class="flex-1 text-center bg-gray-300 text-gray-800 font-semibold py-2.5 

@@ -1,35 +1,66 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'App Pegawai')</title>
-    <script src="https://cdn.tailwindcss.com/3.4.0"></script>
-</head>
-<body class="bg-gray-100 min-h-screen flex flex-col">
+    <title>{{ $title }}</title>
 
-    <!-- Header -->
-    <header class="bg-blue-500 text-white p-4">
-        <h1 class="text-xl font-bold">@yield('page-title', 'App Pegawai')</h1>
-        <nav class="mt-2">
-            <ul class="flex space-x-4">
-                <li><a href="{{ url('/employees') }}" class="hover:underline">Employee</a></li>
-                <li><a href="{{ url('/departments') }}" class="hover:underline">Department</a></li>
-                <li><a href="{{ url('/positions') }}" class="hover:underline">Position</a></li>
-                <li><a href="{{ url('/report') }}" class="hover:underline">Report</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com/3.4.0"></script>
+
+    <!-- Flowbite -->
+    <link href="https://unpkg.com/flowbite@1.6.6/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="https://unpkg.com/flowbite@1.6.6/dist/flowbite.js"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex">
+
+    <!-- Sidebar -->
+    @include('partials.sidebar')
+
+    <!-- Overlay untuk background hitam di mobile -->
+    <div id="overlay"
+        class="fixed inset-0 bg-black opacity-50 hidden z-40 lg:hidden"></div>
 
     <!-- Main content -->
-    <main class="flex-1 container mx-auto p-6">
-        @yield('content')
-    </main>
+    <div class="flex-1 flex flex-col min-h-screen w-full lg:ml-64">
+        <!-- Header -->
+        @include('partials.navbar')
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white text-center py-4">
-        <p>&copy; {{ date('Y') }} App Pegawai</p>
-    </footer>
+        <!-- Konten -->
+        <main class="flex-1 p-6 bg-gray-50">
+            @yield('content')
+        </main>
 
+        <!-- Footer -->
+        <footer class="bg-white text-center py-4 text-gray-600 border-t">
+            <p>Dibuat dengan ❤️ oleh PENS Framework Project</p>
+        </footer>
+    </div>
+
+    <!-- Script toggle sidebar -->
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        const openSidebar = document.getElementById('openSidebar');
+        const closeSidebar = document.getElementById('closeSidebar');
+
+        openSidebar.addEventListener('click', () => {
+            sidebar.classList.remove('-translate-x-full');
+            overlay.classList.remove('hidden');
+        });
+
+        closeSidebar.addEventListener('click', () => {
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+        });
+
+        overlay.addEventListener('click', () => {
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+        });
+    </script>
 </body>
+
 </html>

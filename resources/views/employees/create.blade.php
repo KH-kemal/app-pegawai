@@ -1,8 +1,5 @@
 @extends('master')
 
-@section('title', 'Tambah Pegawai')
-@section('page-title', 'Tambah Pegawai')
-
 @section('content')
 <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-lg mx-auto">
     <h1 class="text-2xl font-bold text-gray-800 mb-6">Form Tambah Pegawai</h1>
