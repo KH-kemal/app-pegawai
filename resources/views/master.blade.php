@@ -44,9 +44,7 @@
         </main>
 
         <!-- Footer -->
-        <footer class="bg-white text-center py-4 text-gray-600 border-t">
-            <p>Dibuat dengan ❤️ oleh PENS Framework Project</p>
-        </footer>
+       @include('partials.footer')
     </div>
 
     

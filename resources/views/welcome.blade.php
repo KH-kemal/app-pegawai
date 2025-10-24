@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-<div class="bg-white p-6 rounded-2xl shadow-lg text-center">
+<div class="bg-white p-6 rounded-2xl shadow-lg text-center mb-24 pb-28">
     <h1 class="text-3xl font-bold text-gray-800 mb-4">Selamat Datang di Dashboard</h1>
     <p class="text-gray-600">
         Gunakan menu di sidebar untuk mengelola data pegawai, absensi, jabatan, dan laporan.

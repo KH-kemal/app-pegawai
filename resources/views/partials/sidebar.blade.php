@@ -1,9 +1,9 @@
 <aside id="sidebar"
-    class="fixed inset-y-0 left-0 w-64 bg-blue-900 text-gray-100 flex flex-col shadow-lg
+    class="fixed inset-y-0 left-0 w-64 bg-blue-900 dark:bg-gray-900 text-gray-100 flex flex-col shadow-lg
            transform -translate-x-full lg:translate-x-0 transition-all duration-300 ease-in-out z-50 overflow-hidden">
 
     <!-- Header Sidebar -->
-    <div class="flex items-center justify-between h-16 border-b border-blue-700 px-4">
+    <div class="flex items-center justify-between h-16 border-b border-white px-4">
         <div class="flex items-center space-x-2">
             <img src="{{ asset('img/logo.png') }}" alt="Logo" class="w-10 h-10 rounded-full">
             <h1 class="text-lg font-bold tracking-wide transition-all duration-300 sidebar-text">
@@ -46,7 +46,5 @@
         </ul>
     </nav>
 
-    <div class="p-4 border-t border-blue-800 text-center text-xs text-gray-400 sidebar-text">
-        © {{ date('Y') }} App Pegawai
-    </div>
+    
 </aside>

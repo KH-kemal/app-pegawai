@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-<div class="bg-white p-6 rounded-2xl shadow-lg">
+<div class="bg-white p-6 rounded-2xl shadow-lg mb-20 pb-24">
     <div class="flex justify-between items-center mb-4">
         <h1 class="text-2xl font-bold text-gray-800">Daftar Gaji Pegawai</h1>
         <a href="{{ route('salaries.create') }}"
