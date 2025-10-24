@@ -32,21 +32,21 @@
             <label class="block text-sm font-medium text-gray-700">Tanggal Lahir</label>
             <input type="date" name="tanggal_lahir" value="{{ old('tanggal_lahir') }}"
                 class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm 
-                       focus:ring-blue-500 focus:border-blue-500 p-2.5 border">
+                        focus:ring-blue-500 focus:border-blue-500 p-2.5 border">
         </div>
 
         <div>
             <label class="block text-sm font-medium text-gray-700">Alamat</label>
             <textarea name="alamat" rows="3"
                 class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm 
-                       focus:ring-blue-500 focus:border-blue-500 p-2.5 border">{{ old('alamat') }}</textarea>
+                        focus:ring-blue-500 focus:border-blue-500 p-2.5 border">{{ old('alamat') }}</textarea>
         </div>
 
         <div>
             <label class="block text-sm font-medium text-gray-700">Tanggal Masuk</label>
             <input type="date" name="tanggal_masuk" value="{{ old('tanggal_masuk') }}"
                 class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm 
-                       focus:ring-blue-500 focus:border-blue-500 p-2.5 border">
+                        focus:ring-blue-500 focus:border-blue-500 p-2.5 border">
         </div>
 
         <div>
@@ -64,7 +64,7 @@
             <label class="block text-sm font-medium text-gray-700">Jabatan</label>
             <select name="jabatan_id"
                 class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm 
-                       focus:ring-blue-500 focus:border-blue-500 p-2.5 border">
+                        focus:ring-blue-500 focus:border-blue-500 p-2.5 border">
                 <option disabled selected>Pilih Jabatan</option>
                 @foreach($positions as $position)
                 <option value="{{ $position->id }}">{{ $position->nama_jabatan }}</option>

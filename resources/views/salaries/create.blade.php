@@ -10,11 +10,14 @@
         <!-- Nama Pegawai -->
         <div>
             <label class="block text-sm font-medium text-gray-700">Nama Pegawai</label>
-            <select name="karyawan_id"
+            <select name="karyawan_id" id="karyawan_id"
                 class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2.5 border">
                 <option disabled selected>Pilih Pegawai</option>
                 @foreach($employees as $employee)
-                <option value="{{ $employee->id }}">{{ $employee->nama_lengkap }}</option>
+                    <option value="{{ $employee->id }}"
+                        data-gaji="{{ $employee->position->gaji_pokok ?? 0 }}">
+                        {{ $employee->nama_lengkap }}
+                    </option>
                 @endforeach
             </select>
         </div>
@@ -22,21 +25,33 @@
         <!-- Gaji Pokok -->
         <div>
             <label class="block text-sm font-medium text-gray-700">Gaji Pokok</label>
-            <input type="number" name="gaji_pokok" class="mt-1 block w-full border rounded-lg p-2.5">
+            <input type="number" id="gaji_pokok" name="gaji_pokok" readonly
+                class="mt-1 block w-full border rounded-lg p-2.5 bg-gray-100 text-gray-600 cursor-not-allowed">
         </div>
 
         <!-- Tunjangan -->
         <div>
             <label class="block text-sm font-medium text-gray-700">Tunjangan</label>
-            <input type="number" name="tunjangan" class="mt-1 block w-full border rounded-lg p-2.5">
+            <input type="number" name="tunjangan"
+                class="mt-1 block w-full border rounded-lg p-2.5">
         </div>
 
         <!-- Potongan -->
         <div>
             <label class="block text-sm font-medium text-gray-700">Potongan</label>
-            <input type="number" name="potongan" class="mt-1 block w-full border rounded-lg p-2.5">
+            <input type="number" name="potongan"
+                class="mt-1 block w-full border rounded-lg p-2.5">
         </div>
-    
+
+        <!-- Bulan otomatis -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700">Bulan</label>
+            <input type="text" name="bulan" id="bulan" readonly
+                value="{{ now()->translatedFormat('F Y') }}"
+                class="mt-1 block w-full border rounded-lg p-2.5 bg-gray-100 text-gray-600 cursor-not-allowed">
+        </div>
+
+        <!-- Tombol -->
         <div class="pt-4 flex gap-2">
             <button type="submit"
                 class="flex-1 bg-blue-600 text-white font-semibold py-2.5 rounded-lg shadow hover:bg-blue-700 transition">
@@ -44,11 +59,24 @@
             </button>
             <a href="{{ route('salaries.index') }}"
                 class="flex-1 text-center bg-gray-300 text-gray-800 font-semibold py-2.5 
-          rounded-lg shadow hover:bg-gray-400 transition duration-200">
+                       rounded-lg shadow hover:bg-gray-400 transition duration-200">
                 Batal
             </a>
-
         </div>
     </form>
 </div>
+
+{{-- Script otomatis isi gaji --}}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const selectPegawai = document.getElementById("karyawan_id");
+        const inputGaji = document.getElementById("gaji_pokok");
+
+        selectPegawai.addEventListener("change", function() {
+            const selectedOption = this.options[this.selectedIndex];
+            const gaji = selectedOption.getAttribute("data-gaji") || 0;
+            inputGaji.value = gaji;
+        });
+    });
+</script>
 @endsection

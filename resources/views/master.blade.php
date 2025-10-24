@@ -12,6 +12,17 @@
     <!-- Flowbite -->
     <link href="https://unpkg.com/flowbite@1.6.6/dist/flowbite.min.css" rel="stylesheet" />
     <script src="https://unpkg.com/flowbite@1.6.6/dist/flowbite.js"></script>
+
+    <style>
+    #sidebar {
+        transition: all 0.3s ease;
+    }
+    #main-content {
+        transition: all 0.3s ease;
+    }
+</style>
+
+
 </head>
 
 <body class="bg-gray-100 min-h-screen flex flex-col lg:flex-row overflow-x-hidden">
@@ -23,7 +34,7 @@
     <div id="overlay" class="fixed inset-0 bg-black opacity-50 hidden z-40 lg:hidden"></div>
 
     <!-- Main content -->
-    <div class="flex-1 flex flex-col min-h-screen w-full lg:ml-64 transition-all duration-300">
+    <div id="main-content" class="flex-1 flex flex-col min-h-screen w-full ml-64 transition-all duration-300">
         <!-- Header -->
         @include('partials.navbar')
 
@@ -38,29 +49,8 @@
         </footer>
     </div>
 
-    <!-- Script toggle sidebar -->
-    <script>
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('overlay');
-        const openSidebar = document.getElementById('openSidebar');
-        const closeSidebar = document.getElementById('closeSidebar');
+    
 
-        openSidebar.addEventListener('click', () => {
-            sidebar.classList.remove('-translate-x-full');
-            overlay.classList.remove('hidden');
-        });
-
-        closeSidebar.addEventListener('click', () => {
-            sidebar.classList.add('-translate-x-full'); 
-            overlay.classList.add('hidden');
-        });
-
-        overlay.addEventListener('click', () => {
-            sidebar.classList.add('-translate-x-full');
-            overlay.classList.add('hidden');
-        });
-    </script>
 
 </body>
-
 </html>

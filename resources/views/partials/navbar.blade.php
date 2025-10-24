@@ -90,14 +90,27 @@
 <script>
     const sidebar = document.getElementById('sidebar');
     const sidebarToggle = document.getElementById('sidebar-toggle');
+    const mainContent = document.getElementById('main-content');
+    const textLabels = document.querySelectorAll('.sidebar-text');
 
-    // Toggle sidebar untuk layar besar (collapse)
     sidebarToggle.addEventListener('click', () => {
         if (window.innerWidth >= 1024) {
-            sidebar.classList.toggle('w-64');
-            sidebar.classList.toggle('w-20');
+            // Mode collapse (desktop)
+            const isCollapsed = sidebar.classList.toggle('w-20');
+            sidebar.classList.toggle('w-64', !isCollapsed);
+
+            // Sembunyikan teks menu
+            textLabels.forEach(label => label.classList.toggle('hidden', isCollapsed));
+
+            // Ubah margin kiri konten utama supaya ikut melebar
+            mainContent.classList.toggle('ml-64', !isCollapsed);
+            mainContent.classList.toggle('ml-20', isCollapsed);
         } else {
+            // Mode mobile (buka/tutup overlay)
             sidebar.classList.toggle('-translate-x-full');
         }
     });
 </script>
+
+
+

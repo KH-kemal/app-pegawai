@@ -1,18 +1,18 @@
 <aside id="sidebar"
     class="fixed inset-y-0 left-0 w-64 bg-blue-900 text-gray-100 flex flex-col shadow-lg
-           transform -translate-x-full lg:translate-x-0 transition-all duration-300 ease-in-out z-50">
+           transform -translate-x-full lg:translate-x-0 transition-all duration-300 ease-in-out z-50 overflow-hidden">
 
     <!-- Header Sidebar -->
     <div class="flex items-center justify-between h-16 border-b border-blue-700 px-4">
         <div class="flex items-center space-x-2">
             <img src="{{ asset('img/logo.png') }}" alt="Logo" class="w-10 h-10 rounded-full">
-            <h1 id="sidebarTitle" class="text-lg font-bold tracking-wide transition-all duration-300">Wardiere Admin</h1>
+            <h1 class="text-lg font-bold tracking-wide transition-all duration-300 sidebar-text">
+                Wardiere Admin
+            </h1>
         </div>
-
-        <!-- Tombol close sidebar (mobile only) -->
         <button id="closeSidebar" class="lg:hidden text-gray-300 hover:text-white focus:outline-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M6 18L18 6M6 6l12 12" />
             </svg>
@@ -36,9 +36,8 @@
             @foreach ($menus as $menu)
                 <li>
                     <a href="{{ url('/' . $menu['route']) }}"
-                        class="group flex items-center space-x-3 px-3 py-2 rounded-md transition
-                        hover:bg-blue-700 {{ request()->is($menu['route'] . '*') ? 'bg-blue-700 text-white font-semibold' : '' }}">
-                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+                        class="group flex items-center space-x-3 px-3 py-2 rounded-md transition hover:bg-blue-700 {{ request()->is($menu['route'] . '*') ? 'bg-blue-700 text-white font-semibold' : '' }}">
+                        <svg class="w-6 h-6 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
                             stroke-width="2" viewBox="0 0 24 24">{!! $menu['icon'] !!}</svg>
                         <span class="sidebar-text">{{ $menu['label'] }}</span>
                     </a>
@@ -47,8 +46,7 @@
         </ul>
     </nav>
 
-    <!-- Footer Sidebar -->
-    <div class="p-4 border-t border-blue-800 text-center text-xs text-gray-400">
+    <div class="p-4 border-t border-blue-800 text-center text-xs text-gray-400 sidebar-text">
         © {{ date('Y') }} App Pegawai
     </div>
 </aside>
