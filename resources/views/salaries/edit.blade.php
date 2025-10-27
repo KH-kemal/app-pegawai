@@ -24,7 +24,7 @@
             <select name="karyawan_id" id="karyawan_id" required
                 class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500">
                 @foreach ($employees as $employee)
-                <option value="{{ $employee->id }}" {{ $salary->karya   wan_id == $employee->id ? 'selected' : '' }}>
+                <option value="{{ $employee->id }}" {{ $salary->karyawan_id == $employee->id ? 'selected' : '' }}>
                     {{ $employee->nama_lengkap }}
                 </option>
                 @endforeach

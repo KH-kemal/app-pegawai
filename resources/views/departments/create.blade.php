@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-<div class="bg-white p-6 rounded-2xl shadow-lg max-w-lg mx-auto">
+<div class="bg-white p-6 rounded-2xl shadow-lg max-w-lg mx-auto mb-28 pb-28">
     <h1 class="text-2xl font-bold text-gray-800 mb-4">Tambah Departemen</h1>
 
     @if ($errors->any())
