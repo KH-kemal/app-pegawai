@@ -4,24 +4,25 @@
 
     <!-- Header Sidebar -->
     <div class="flex items-center justify-between h-16 border-b border-white px-4">
-        <div class="flex items-center space-x-2">
-            <img src="{{ asset('img/logo.png') }}" alt="Logo" class="w-10 h-10 rounded-full">
-            <h1 class="text-lg font-bold tracking-wide transition-all duration-300 sidebar-text">
-                Wardiere Admin
-            </h1>
-        </div>
+    <a href="{{ url('/') }}" class="flex items-center space-x-2 hover:opacity-80 transition">
+        <img src="{{ asset('img/logo.png') }}" alt="Logo" class="w-10 h-10 rounded-full">
+        <h1 class="text-lg font-bold tracking-wide transition-all duration-300 sidebar-text">
+            Wardiere Admin
+        </h1>
+    </a>
+    </div>
         <button id="closeSidebar" class="lg:hidden text-gray-300 hover:text-white focus:outline-none">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
                 viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M6 18L18 6M6 6l12 12" />
             </svg>
-        </button>
+        </button>   
     </div>
 
     <!-- Navigasi -->
     <nav class="flex-1 overflow-y-auto mt-4">
-        <ul class="space-y-1 px-3">
+        <ul class="space-y-5 px-3">
             @php
                 $menus = [
                     ['route' => 'employees', 'icon' => '<path d="M6 2a2 2 0 0 0-2 2v4a1 1 0 1 0 2 0V4h12v7h-2a1 1 0 0 0-1 1v2h-1a1 1 0 1 0 0 2h5a1 1 0 0 0 1-1V4a2 2 0 0 0-2-2H6Zm3 9a3 3 0 1 1 6 0 3 3 0 0 1-6 0ZM4 20a3 3 0 0 1 3-3h3a3 3 0 0 1 3 3 1 1 0 0 1-1 1H5a1 1 0 0 1-1-1Z"/>', 'label' => 'Pegawai'],

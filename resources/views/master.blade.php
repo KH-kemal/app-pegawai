@@ -32,7 +32,7 @@
 
     <!-- Overlay untuk mobile -->
     <div id="overlay" class="fixed inset-0 bg-black opacity-50 hidden z-40 lg:hidden"></div>
-
+    
     <!-- Main content -->
     <div id="main-content" class="flex-1 flex flex-col min-h-screen w-full ml-64 transition-all duration-300">
         <!-- Header -->
